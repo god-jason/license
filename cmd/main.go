@@ -1,13 +1,22 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/god-jason/license"
 	"os"
+	"time"
 )
 
 func main() {
 	k, _ := license.Generate()
-	b, _ := json.Marshal(k)
-	_ = os.WriteFile("license.json", b, 0644)
+
+	lic := license.License{
+		Product:   "master",
+		MachineID: "123",
+		ExpireAt:  time.Now().Add(time.Hour),
+	}
+
+	_ = lic.Sign(k.PrivateKey)
+
+	_ = os.WriteFile("lic.txt", []byte(lic.Stringify()), os.ModePerm)
+
 }

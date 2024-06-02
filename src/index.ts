@@ -1,13 +1,12 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import * as ed from '@noble/ed25519';
 
 export class License {
-    product: string
-    domain: string
-    machine_id: string
-    expire_at: string
-    signature: string
-
+    product: string = ''
+    domain: string = ''
+    machine_id: string = ''
+    expire_at: string = ''
+    signature: string = ''
 
     Stringify() {
         let str = JSON.stringify(this)

@@ -2,15 +2,29 @@
   "name": "@god-jason/license",
   "version": "1.0.0",
   "description": "授权证书基础库",
-  "main": "index.js",
-  "scripts": {},
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public"
+  },
   "author": "杰神",
   "dependencies": {
     "@noble/ed25519": "^2.1.0",
     "dayjs": "^1.11.11"
   },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
   "repository": {
     "url": "https://github.com/god-jason/license"
   },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "ignore": [
+    "*.go"
+  ],
   "license": "GPL-3.0-only"
 }
