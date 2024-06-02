@@ -1,8 +1,8 @@
 {
   "name": "@god-jason/license",
-  "version": "1.0.0",
-  "description": "授权证书基础库",
-  "main": "dist/index.js",
+  "version": "1.0.1",
+  "description": "授权证书基础库，使用ed25519算法",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "prepublish": "npm run build",
