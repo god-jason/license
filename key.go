@@ -2,12 +2,12 @@ package license
 
 import (
 	"crypto/ed25519"
-	"encoding/base64"
+	"encoding/hex"
 	"encoding/json"
 	"os"
 )
 
-const DefaultPublicKey = "J7trVLsKRE2r+jRvCAHxycPjQbdwIm52+YU0jJo1KJM="
+const DefaultPublicKey = "1d858f2f7270a7fd1e51acc61251aa38f4ee6dc8f5973a50a11381279e5770be"
 
 type Pair struct {
 	PublicKey  string `json:"public_key"`
@@ -37,7 +37,7 @@ func Generate() (*Pair, error) {
 	}
 
 	return &Pair{
-		PublicKey:  base64.StdEncoding.EncodeToString(p),
-		PrivateKey: base64.StdEncoding.EncodeToString(pr),
+		PublicKey:  hex.EncodeToString(p),
+		PrivateKey: hex.EncodeToString(pr),
 	}, nil
 }
