@@ -9,11 +9,12 @@ import (
 )
 
 type License struct {
-	Domain    string    `json:"domain,omitempty"`
-	MachineID string    `json:"machine_id,omitempty"`
-	ExpireAt  time.Time `json:"expire_at,omitempty"`
+	Product   string    `json:"product"`              //产品
+	Domain    string    `json:"domain,omitempty"`     //域名，用于前端，支持多个
+	MachineID string    `json:"machine_id,omitempty"` //机器ID，用于后端
+	ExpireAt  time.Time `json:"expire_at,omitempty"`  //失效期
 
-	Signature string `json:"signature,omitempty"`
+	Signature string `json:"signature,omitempty"` //签名
 }
 
 func (l *License) Sign(privateKey string) error {

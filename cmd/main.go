@@ -1,10 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/god-jason/license"
-	"log"
+	"os"
 )
 
 func main() {
-	log.Println(license.Generate())
+	k, _ := license.Generate()
+	b, _ := json.Marshal(k)
+	_ = os.WriteFile("license.json", b, 0644)
 }

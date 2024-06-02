@@ -5,6 +5,8 @@ import (
 	"encoding/base64"
 )
 
+const DefaultPublicKey = "J7trVLsKRE2r+jRvCAHxycPjQbdwIm52+YU0jJo1KJM="
+
 type Pair struct {
 	PublicKey  string `json:"public_key"`
 	PrivateKey string `json:"private_key"`
