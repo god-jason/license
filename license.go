@@ -2,8 +2,11 @@ package license
 
 import (
 	"crypto/ed25519"
+	"encoding/base64"
 	"encoding/hex"
+	"encoding/json"
 	"errors"
+	"github.com/super-l/machine-code/machine"
 	"strings"
 	"time"
 )
@@ -15,6 +18,19 @@ type License struct {
 	ExpireAt  time.Time `json:"expire_at,omitempty"`  //失效期
 
 	Signature string `json:"signature,omitempty"` //签名
+}
+
+func (l *License) Stringify() string {
+	buf, _ := json.Marshal(l)
+	return base64.StdEncoding.EncodeToString(buf)
+}
+
+func (l *License) Parse(lic string) error {
+	buf, err := base64.StdEncoding.DecodeString(lic)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(buf, l)
 }
 
 func (l *License) Serialize() string {
@@ -60,5 +76,20 @@ func (l *License) Verify(publicKey string) error {
 		return errors.New("签名错误")
 	}
 
+	return nil
+}
+
+func (l *License) Expired() bool {
+	return time.Now().After(l.ExpireAt)
+}
+
+func (l *License) Validate() error {
+	cpuid, err := machine.GetCpuSerialNumber()
+	if err != nil {
+		return err
+	}
+	if l.MachineID != cpuid {
+		return errors.New("机器码错误")
+	}
 	return nil
 }
