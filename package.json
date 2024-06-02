@@ -1,0 +1,15 @@
+{
+  "name": "@god-jason/license",
+  "version": "1.0.0",
+  "description": "授权证书基础库",
+  "main": "index.js",
+  "scripts": {},
+  "author": "杰神",
+  "dependencies": {
+    "@noble/ed25519": "^2.1.0"
+  },
+  "repository": {
+    "url": "https://github.com/god-jason/license"
+  },
+  "license": "GPL-3.0-only"
+}

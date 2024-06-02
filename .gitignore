@@ -22,3 +22,5 @@ go.work
 go.work.sum
 /.idea
 /license.json
+/package-lock.json
+/node_modules
